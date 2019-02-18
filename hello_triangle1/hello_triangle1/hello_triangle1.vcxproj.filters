@@ -21,5 +21,48 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="shader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="shader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stb_image.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="flip.vert">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="norm.frag">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="horiz_offset.vert">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="color_is_pos.frag">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="norm.vert">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="texture.vert">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="texture.frag">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="flip_face.frag">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="multiface.frag">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="interptex.frag">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>
