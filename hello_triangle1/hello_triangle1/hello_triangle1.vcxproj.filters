@@ -67,5 +67,8 @@
     <None Include="translate.vert">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="perspective.vert">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

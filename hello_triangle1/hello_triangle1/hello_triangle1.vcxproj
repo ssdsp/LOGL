@@ -145,6 +145,7 @@
     <None Include="multiface.frag" />
     <None Include="norm.frag" />
     <None Include="norm.vert" />
+    <None Include="perspective.vert" />
     <None Include="texture.frag" />
     <None Include="texture.vert" />
     <None Include="translate.vert" />
