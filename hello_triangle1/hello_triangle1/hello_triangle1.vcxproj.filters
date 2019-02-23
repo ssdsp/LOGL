@@ -64,5 +64,8 @@
     <None Include="interptex.frag">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="translate.vert">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

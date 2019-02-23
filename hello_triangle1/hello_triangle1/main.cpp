@@ -1,5 +1,8 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
 
 #include <iostream>
 
@@ -96,7 +99,7 @@ stbi_image_free(data);
 
 // build and compile our shader program
 // ------------------------------------
-Shader myShader("texture.vert", "interptex.frag");
+Shader myShader("translate.vert", "interptex.frag");
 
 // set up vertex data (and buffer(s)) and configure vertex attributes
 // ------------------------------------------------------------------
@@ -141,7 +144,6 @@ glBindBuffer(GL_ARRAY_BUFFER, 0);
 // VAOs requires a call to glBindVertexArray anyways so we generally don't unbind VAOs (nor VBOs) when it's not directly necessary.
 glBindVertexArray(0);
 
-
 // uncomment this call to draw in wireframe polygons.
 //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
@@ -165,7 +167,20 @@ while (!glfwWindowShouldClose(window))
 	// draw our first triangle
 	glBindVertexArray(VAO); // seeing as we only have a single VAO there's no need to bind it every time, but we'll do so to keep things a bit more organized
 	//glDrawArrays(GL_TRIANGLES, 0, 6);
+	glm::mat4 trans = glm::mat4(1.0f);
+	trans = glm::translate(trans, glm::vec3(0.5f, -0.5f, 0.0f));
+	trans = glm::rotate(trans, (float)glfwGetTime(), glm::vec3(0.0f, 0.0f, 1.0f));
+
+	unsigned int transformLoc = glGetUniformLocation(myShader.ID, "transform");
+	glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(trans));
 	myShader.setFloat("mixAmount", mixAmount);
+	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+
+	// Draw a second box
+	trans = glm::mat4(1.0f);
+	trans = glm::translate(trans, glm::vec3(-0.5f, 0.5f, 0.0f));
+	trans = glm::scale(trans, glm::vec3(sin((float)glfwGetTime()), sin((float)glfwGetTime()), 1.0f));
+	glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(trans));
 	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 	// glBindVertexArray(0); // no need to unbind it every time 
 
